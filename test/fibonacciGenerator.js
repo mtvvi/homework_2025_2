@@ -20,7 +20,7 @@ QUnit.module("Тестируем функцию fibonacciGenerator", function() 
     });
 
     QUnit.test("Работает правильно с типом отличным от Number", function(assert) {
-        const fibGen = fibonacciGenerator("undefined");
+        const fibGen = fibonacciGenerator(undefined);
 
         assert.deepEqual([...fibGen], [], "Генерация типом отличным от Number должна вернуть пустой массив.");
     });
