@@ -18,4 +18,32 @@ QUnit.module("Тестируем функцию fibonacciGenerator", function() 
 
         assert.deepEqual([...fibGen], [], "Генерация отрицательного числа должна вернуть пустой массив.");
     });
+
+    QUnit.test("Работает правильно с типом отличным от Number", function(assert) {
+        const fibGen = fibonacciGenerator("undefined");
+
+        assert.deepEqual([...fibGen], [], "Генерация типом отличным от Number должна вернуть пустой массив.");
+    });
+
+    QUnit.test("Работает правильно с нулем чисел", function(assert) {
+        const fibGen = fibonacciGenerator(0);
+
+        assert.deepEqual([...fibGen], [], "Генерация нуля чисел должна вернуть пустой массив.");
+    });
+
+    QUnit.test("Работает правильно с дробным числом", function(assert) {
+        const fibGen = fibonacciGenerator(1.1);
+
+        assert.deepEqual([...fibGen], [], "Генерация дробного числа чисел должна вернуть пустой массив.");
+    });
+
+    QUnit.test("Работает правильно итерация через next", function(assert) {
+        const fibGen = fibonacciGenerator(5);
+        assert.strictEqual(fibGen.next().value, 0);
+        assert.strictEqual(fibGen.next().value, 1);
+        assert.strictEqual(fibGen.next().value, 1);
+        assert.strictEqual(fibGen.next().value, 2);
+        assert.strictEqual(fibGen.next().value, 3);
+        assert.strictEqual(fibGen.next().done, true);
+    });
 });
